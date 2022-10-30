@@ -2,13 +2,9 @@ package praktikum;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class BurgerTest {
     private Burger burger;
@@ -37,9 +33,6 @@ public class BurgerTest {
 
     @Test
     public void setBunsReturnCorrectValue(){
-
-      //  Mockito.when(bun.getName()).thenReturn("Ржаная");
-      //  Mockito.when(bun.getPrice()).thenReturn(3.45f);
 
         String actualBunName = burger.bun.getName();
         float actualBunsPrice = burger.bun.getPrice();
