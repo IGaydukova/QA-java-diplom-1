@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="praktikum.IngredientTest" time="0.001" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="praktikum.IngredientTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.15+9-LTS"/>
@@ -67,7 +67,7 @@
   </properties>
   <testcase classname="praktikum.IngredientTest" name="getNameReturnCorrectValue[]" time="0"/>
   <testcase classname="praktikum.IngredientTest" name="getPriceReturnCorrectValue[]" time="0"/>
-  <testcase classname="praktikum.IngredientTest" name="getType[]" time="0.001"/>
+  <testcase classname="praktikum.IngredientTest" name="getType[]" time="0"/>
   <testcase classname="praktikum.IngredientTest" name="getNameReturnCorrectValue[]" time="0"/>
   <testcase classname="praktikum.IngredientTest" name="getPriceReturnCorrectValue[]" time="0"/>
   <testcase classname="praktikum.IngredientTest" name="getType[]" time="0"/>

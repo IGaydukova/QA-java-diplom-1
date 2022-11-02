@@ -2,14 +2,20 @@ package praktikum;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
     private Burger burger;
     private Database database;
    // @Spy
+    @Mock
     private Bun bun;
     private Ingredient ingredient;
     String expectedNameIngridients;
@@ -19,9 +25,9 @@ public class BurgerTest {
     @Before
     public void setUp(){
         database = new Database();
-    burger = new Burger();
+        burger = new Burger();
     //взяли булочку
-        bun = database.availableBuns().get(0); //new Bun("Ржаная", 3.45f);
+    //  bun = new Bun("Ржаная", 3.45f);
         burger.setBuns(bun);
     //добавили первый ингридиент
         ingredient = database.availableIngredients().get(0);//new Ingredient(IngredientType.FILLING, expectedNameIngridients, expectedPriceIngridients);
@@ -33,11 +39,13 @@ public class BurgerTest {
 
     @Test
     public void setBunsReturnCorrectValue(){
-
+        Mockito.when(bun.getName()).thenReturn("black bun");
+        Mockito.when(bun.getPrice()).thenReturn(100f);
         String actualBunName = burger.bun.getName();
         float actualBunsPrice = burger.bun.getPrice();
-        assertEquals("Name Bun in Burger is incorrect", actualBunName, bun.getName());
-        assertEquals("Price Bun in Burger is incorrect", actualBunsPrice, bun.getPrice(),0);
+
+        assertEquals("Name Bun in Burger is incorrect", actualBunName, "black bun");
+        assertEquals("Price Bun in Burger is incorrect", actualBunsPrice, 100f,0);
     }
 
     @Test
@@ -74,6 +82,7 @@ public class BurgerTest {
 
     @Test
     public void getPriceCountPriceCorrect(){
+        Mockito.when(bun.getPrice()).thenReturn(100f);
         float expectedPrice = bun.getPrice()*2;
         for (int i = 0; i < burger.ingredients.size(); i ++) {
             expectedPrice += burger.ingredients.get(i).getPrice();
@@ -83,6 +92,7 @@ public class BurgerTest {
 
     @Test
     public void getReceiptReturnCorrectValue(){
+        Mockito.when(bun.getName()).thenReturn("black bun");
         assertNotEquals(-1,burger.getReceipt().indexOf("(==== "+bun.getName()+" ====)"));
         assertNotEquals(-1,burger.getReceipt().indexOf("= "+burger.ingredients.get(0).getType().name().toLowerCase()+" " +burger.ingredients.get(0).getName() +" ="));
         assertNotEquals(-1,burger.getReceipt().indexOf("= "+burger.ingredients.get(1).getType().name().toLowerCase()+" " +burger.ingredients.get(0).getName() +" ="));
